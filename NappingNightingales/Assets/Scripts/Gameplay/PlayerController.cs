@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float collisionOffset = 0.05f;
 
+    public GameObject projectile;
+
     #endregion
 
     #region Methods
@@ -41,6 +43,13 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
+    }
+
+    void OnFire() 
+    {
+        //need a little offset for the position
+        GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
+        bullet.GetComponent<SpriteRenderer>().flipX = mySR.flipX;
     }
 
     void FixedUpdate()  
