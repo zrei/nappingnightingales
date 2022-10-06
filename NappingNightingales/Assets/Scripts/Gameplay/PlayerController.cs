@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb2D;
     private SpriteRenderer mySR;
+    private Transform transform;
 
     // Movement support
     private Vector2 movementInput;
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private float collisionOffset = 0.05f;
 
     public GameObject projectile;
-
+    
     #endregion
 
     #region Methods
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         mySR = GetComponent<SpriteRenderer>();
-
+        transform = GetComponent<Transform>();
     }
 
     void Start()
@@ -48,8 +49,9 @@ public class PlayerController : MonoBehaviour
     void OnFire() 
     {
         //need a little offset for the position
-        GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
-        bullet.GetComponent<SpriteRenderer>().flipX = mySR.flipX;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Quaternion bulletRotation = Quaternion.LookRotation(Vector3.forward, mousePos - transform.position);
+        GameObject bullet = Instantiate(projectile, transform.position, bulletRotation);
     }
 
     void FixedUpdate()  
