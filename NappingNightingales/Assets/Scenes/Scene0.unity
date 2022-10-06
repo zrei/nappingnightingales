@@ -239,6 +239,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   movementSpeed: 3
   collisionOffset: 0.05
+  projectile: {fileID: 4629388172298142835, guid: 07a43f46bb75443c4bfb18a79d8de43e, type: 3}
 --- !u!114 &190731886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,7 +552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1507740606
 SpriteRenderer:
   m_ObjectHideFlags: 0
