@@ -20,7 +20,7 @@ public class BulletController : MonoBehaviour
     private void Awake() 
     {
         transform = GetComponent<Transform>();
-        id = BulletController.currId;
+        this.id = BulletController.currId;
         BulletController.currId += 1;
     }
     
@@ -44,7 +44,7 @@ public class BulletController : MonoBehaviour
             EventManager.current.CollideWall(this.id);
         } else if (otherObject.gameObject.CompareTag("Enemy"))
         {
-            //call some method from the enemy controller
+            BulletController.DestroyBullet(this.gameObject);
         }
     }
 
@@ -52,8 +52,12 @@ public class BulletController : MonoBehaviour
     private void CollideWall(int bulletId) 
     {
         if (this.id == bulletId) {
-            Destroy(this.gameObject);
+            BulletController.DestroyBullet(this.gameObject);
         }
+    }
+
+    public static void DestroyBullet(GameObject bullet) {
+        Destroy(bullet);
     }
 
     #endregion

@@ -32,4 +32,12 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    public event Action<int> onKillEnemy;
+    public void KillEnemy(int id)
+    {
+        if (onKillEnemy != null) {
+            onKillEnemy(id);
+        }
+    }
+
 }
