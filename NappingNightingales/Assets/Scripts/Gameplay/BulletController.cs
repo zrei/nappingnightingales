@@ -54,6 +54,11 @@ public class BulletController : MonoBehaviour
         }
     }
 
+    private void OnBecameInvisible()
+    {
+        DestroyBullet(this.gameObject);
+    }
+
     public static void DestroyBullet(GameObject bullet) {
         Destroy(bullet);
     }

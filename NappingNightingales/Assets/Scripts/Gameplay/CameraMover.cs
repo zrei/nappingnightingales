@@ -8,7 +8,6 @@ public class CameraMover : MonoBehaviour
     private GameObject player;
     private Vector3 moveToPosition;
 
-    //TODO: remove SerializeField
     [SerializeField]
     private float offsetSpeed;
 
