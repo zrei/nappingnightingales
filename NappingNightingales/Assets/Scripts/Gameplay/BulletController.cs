@@ -6,20 +6,18 @@ public class BulletController : MonoBehaviour
 {
     #region Fields
 
-    private Transform transform;
-    
     [SerializeField]
     private float bulletSpeed = 5.5f;
 
     private static int currId = 0;
     private int id;
+
     #endregion
 
     #region Methods
 
     private void Awake() 
     {
-        transform = GetComponent<Transform>();
         this.id = BulletController.currId;
         BulletController.currId += 1;
     }

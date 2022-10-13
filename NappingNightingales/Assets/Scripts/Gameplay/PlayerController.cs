@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb2D;
     private SpriteRenderer mySR;
-    private Transform transform;
 
     // Movement support
     private Vector2 movementInput;
@@ -31,7 +30,6 @@ public class PlayerController : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         mySR = GetComponent<SpriteRenderer>();
-        transform = GetComponent<Transform>();
     }
 
     void Start()
