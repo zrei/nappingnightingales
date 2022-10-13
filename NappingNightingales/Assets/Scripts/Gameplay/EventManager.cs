@@ -13,12 +13,8 @@ public class EventManager : MonoBehaviour
         current = this;
     }
 
-    void Start()
-    {
-
-    }
-        
-    public void SpawnBullet(Vector3 position, Quaternion rotation) { //can overload this later
+    public void SpawnBullet(Vector3 position, Quaternion rotation)
+    { //can overload this later
         Instantiate(playerBullet, position, rotation);
     }
 

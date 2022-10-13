@@ -28,12 +28,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        
-    }
-
     private void KillEnemy(int id)
     {
         if (this.id == id)
