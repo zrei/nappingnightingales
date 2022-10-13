@@ -80,5 +80,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Damage() {
+        Debug.Log("Ow!");
+    }
+
     #endregion
 }

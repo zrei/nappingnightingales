@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 190731885}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -828,6 +828,14 @@ PrefabInstance:
     - target: {fileID: 3566968108666174483, guid: 67f29eb23319f4f55b6215d2bb804434, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566968108666174572, guid: 67f29eb23319f4f55b6215d2bb804434, type: 3}
+      propertyPath: maxShootCountdown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566968108666174572, guid: 67f29eb23319f4f55b6215d2bb804434, type: 3}
+      propertyPath: minShootCountdown
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67f29eb23319f4f55b6215d2bb804434, type: 3}

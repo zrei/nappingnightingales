@@ -9,6 +9,7 @@ public class PlayerBulletController : BulletController
         base.OnTriggerEnter2D(otherObject);
         if (otherObject.gameObject.CompareTag("Enemy"))
         {
+            otherObject.GetComponent<EnemyController>().Kill();
             BulletController.DestroyBullet(this.gameObject);
         }
     }

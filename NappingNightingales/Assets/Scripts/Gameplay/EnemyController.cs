@@ -6,6 +6,11 @@ public class EnemyController : MonoBehaviour
 {
     private static int currId = 0;
     private int id;
+    private GameObject player;
+    [SerializeField] private GameObject enemyBullet;
+    [SerializeField] private float minShootCountdown;
+    [SerializeField] private float maxShootCountdown;
+    private float shootCountdown;
    
     private void Awake()
     {
@@ -16,22 +21,30 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         EventManager.current.onKillEnemy += KillEnemy;
-    }
-
-    private void OnTriggerEnter2D(Collider2D otherObject)
-    {
-        if (otherObject.gameObject.CompareTag("Bullet"))
-        {
-           EventManager.current.KillEnemy(this.id);
-            //call some method from the enemy controller
-        }
+        ResetShootCountdown();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        
+        shootCountdown -= Time.deltaTime;
+        if (shootCountdown <= 0) {
+            Quaternion bulletRotation = Quaternion.LookRotation(Vector3.forward, player.transform.position - transform.position);
+            Instantiate(enemyBullet, transform.position, bulletRotation);
+            ResetShootCountdown();
+        }
+    }
+
+    private void ResetShootCountdown()
+    {
+        this.shootCountdown = Random.Range(minShootCountdown, maxShootCountdown);
+    }
+
+    public void Kill()
+    {
+        Destroy(this.gameObject);
     }
 
     private void KillEnemy(int id)

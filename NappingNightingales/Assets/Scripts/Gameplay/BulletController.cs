@@ -40,9 +40,6 @@ public class BulletController : MonoBehaviour
         if (otherObject.gameObject.CompareTag("Wall"))
         {
             EventManager.current.CollideWall(this.id);
-        } else if (otherObject.gameObject.CompareTag("Enemy"))
-        {
-            BulletController.DestroyBullet(this.gameObject);
         }
     }
 
