@@ -22,8 +22,6 @@ public class PlayerController : MonoBehaviour
     private float movementSpeed = 3f;
     [SerializeField]
     private float collisionOffset = 0.05f;
-
-    public GameObject projectile;
     
     #endregion
 
@@ -51,7 +49,7 @@ public class PlayerController : MonoBehaviour
         //need a little offset for the position
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Quaternion bulletRotation = Quaternion.LookRotation(Vector3.forward, mousePos - transform.position);
-        GameObject bullet = Instantiate(projectile, transform.position, bulletRotation);
+        EventManager.current.SpawnBullet(transform.position, bulletRotation);
     }
 
     void FixedUpdate()  
