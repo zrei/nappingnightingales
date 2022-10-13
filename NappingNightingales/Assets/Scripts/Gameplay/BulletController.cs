@@ -37,7 +37,7 @@ public class BulletController : MonoBehaviour
     }
 
     //can be overridden
-    private void OnTriggerEnter2D(Collider2D otherObject)
+    protected void OnTriggerEnter2D(Collider2D otherObject)
     {
         if (otherObject.gameObject.CompareTag("Wall"))
         {
