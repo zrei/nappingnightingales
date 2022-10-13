@@ -51,6 +51,12 @@ public class BulletController : MonoBehaviour
         }
     }
 
+    //TODO: delete this method after adding level walls
+    private void OnBecameInvisible()
+    {
+        DestroyBullet(this.gameObject);
+    }
+
     public static void DestroyBullet(GameObject bullet) {
         Destroy(bullet);
     }

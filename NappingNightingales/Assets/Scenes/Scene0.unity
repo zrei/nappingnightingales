@@ -560,7 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 190731882}
-  offsetSpeed: 2.5
+  offsetSpeed: 2
 --- !u!1001 &524546161
 PrefabInstance:
   m_ObjectHideFlags: 0
