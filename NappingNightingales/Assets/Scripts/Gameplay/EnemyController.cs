@@ -54,5 +54,9 @@ public class EnemyController : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    private void OnBecameVisible() {
+        enabled = true;
+    }
     
 }
