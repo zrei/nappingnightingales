@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private float movementSpeed = 3f;
     [SerializeField]
     private float collisionOffset = 0.05f;
+    
+    [SerializeField] private int health;
 
     #endregion
 
@@ -30,7 +32,6 @@ public class PlayerController : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         mySR = GetComponent<SpriteRenderer>();
-
     }
 
     void Start()
@@ -41,6 +42,14 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
+    }
+
+    void OnFire() 
+    {
+        //need a little offset for the position
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Quaternion bulletRotation = Quaternion.LookRotation(Vector3.forward, mousePos - transform.position);
+        EventManager.current.SpawnBullet(transform.position, bulletRotation);
     }
 
     void FixedUpdate()  
@@ -70,6 +79,15 @@ public class PlayerController : MonoBehaviour
                 //transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
             }
 
+        }
+    }
+
+    public void Damage() {
+        Debug.Log("Ow!");
+        health--;
+        if (health <= 0) {
+            // Add game over code here
+            Debug.Log("Game Over");
         }
     }
 
