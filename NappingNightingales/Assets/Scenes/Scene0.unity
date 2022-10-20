@@ -239,6 +239,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   movementSpeed: 3
   collisionOffset: 0.05
+  health: 3
 --- !u!114 &190731886
 MonoBehaviour:
   m_ObjectHideFlags: 0

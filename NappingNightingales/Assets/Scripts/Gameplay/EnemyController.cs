@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     private static int currId = 0;
     private int id;
     private GameObject player;
+    [SerializeField] private int health;
     [SerializeField] private GameObject enemyBullet;
     [SerializeField] private float minShootCountdown;
     [SerializeField] private float maxShootCountdown;
@@ -42,9 +43,12 @@ public class EnemyController : MonoBehaviour
         this.shootCountdown = Random.Range(minShootCountdown, maxShootCountdown);
     }
 
-    public void Kill()
+    public void Damage()
     {
-        Destroy(this.gameObject);
+        health--;
+        if (health <= 0) {
+            Destroy(this.gameObject);
+        }
     }
 
     private void KillEnemy(int id)

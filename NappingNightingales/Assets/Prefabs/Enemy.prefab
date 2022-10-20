@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b8b17ce2b8040fa936580fd97bc5e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 2
   enemyBullet: {fileID: 4629388172298142835, guid: 9c0f59c63c0c9c642942345288ff4e52, type: 3}
   minShootCountdown: 2
   maxShootCountdown: 3

@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float collisionOffset = 0.05f;
     
+    [SerializeField] private int health;
+
     #endregion
 
     #region Methods
@@ -82,6 +84,11 @@ public class PlayerController : MonoBehaviour
 
     public void Damage() {
         Debug.Log("Ow!");
+        health--;
+        if (health <= 0) {
+            // Add game over code here
+            Debug.Log("Game Over");
+        }
     }
 
     #endregion
