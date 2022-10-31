@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -88,6 +89,7 @@ public class PlayerController : MonoBehaviour
         if (health <= 0) {
             // Add game over code here
             Debug.Log("Game Over");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
