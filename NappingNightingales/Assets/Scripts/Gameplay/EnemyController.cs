@@ -62,6 +62,8 @@ public class EnemyController : MonoBehaviour
     private void OnBecameVisible() {
         enabled = true;
         this.gameObject.GetComponent<Pathfinding.AIPath>().enabled = true;
+        this.gameObject.GetComponent<Pathfinding.AIDestinationSetter>().target = 
+            GameObject.FindGameObjectWithTag("Player").transform;
     }
     
 }
