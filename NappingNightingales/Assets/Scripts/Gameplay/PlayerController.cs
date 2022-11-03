@@ -23,7 +23,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float collisionOffset = 0.05f;
     
-    [SerializeField] private int health;
+    [SerializeField] 
+    private int health;
+    [SerializeField] 
+    private float bulletCooldown = 3f;
+    private float shootCountdown = 0f;
+    private bool allowFire = true;
 
     // animation
     [SerializeField]
@@ -45,6 +50,14 @@ public class PlayerController : MonoBehaviour
         castCollisions = new List<RaycastHit2D>();
     }
 
+    void Update()
+    {
+        shootCountdown -= Time.deltaTime;
+        if (shootCountdown <= 0 && !allowFire) {
+            ResetBulletCountdown();
+        }
+    }
+
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
@@ -53,10 +66,21 @@ public class PlayerController : MonoBehaviour
 
     void OnFire() 
     {
-        //need a little offset for the position
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Quaternion bulletRotation = Quaternion.LookRotation(Vector3.forward, mousePos - transform.position);
-        EventManager.current.SpawnBullet(transform.position, bulletRotation);
+        if (allowFire) 
+        {
+            this.allowFire = false;
+            this.shootCountdown = this.bulletCooldown;
+            //need a little offset for the position
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Quaternion bulletRotation = Quaternion.LookRotation(Vector3.forward, mousePos - transform.position);
+            EventManager.current.SpawnBullet(transform.position, bulletRotation);
+            //yield WaitForSeconds(bulletCooldown);
+            //allowfire = true;
+        }
+    }
+
+    private void ResetBulletCountdown() {
+        this.allowFire = true;
     }
 
     void FixedUpdate()  
@@ -100,11 +124,11 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Damage() {
-        Debug.Log("Ow!");
+        //Debug.Log("Ow!");
         health--;
         if (health <= 0) {
             // Add game over code here
-            Debug.Log("Game Over");
+            //Debug.Log("Game Over");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

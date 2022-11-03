@@ -185,6 +185,7 @@ MonoBehaviour:
   movementSpeed: 4
   collisionOffset: 0.05
   health: 3
+  bulletCooldown: 1.5
   animator: {fileID: 0}
 --- !u!95 &3945036024772976997
 Animator:
