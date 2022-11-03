@@ -52,7 +52,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        shootCountdown -= Time.deltaTime;
+        if (!PauseMenu.GameIsPaused)
+        {
+            shootCountdown -= Time.deltaTime;
+        }
         if (shootCountdown <= 0 && !allowFire) {
             ResetBulletCountdown();
         }
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     void OnFire() 
     {
-        if (allowFire) 
+        if (allowFire && !PauseMenu.GameIsPaused) 
         {
             this.allowFire = false;
             this.shootCountdown = this.bulletCooldown;
@@ -74,8 +77,6 @@ public class PlayerController : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Quaternion bulletRotation = Quaternion.LookRotation(Vector3.forward, mousePos - transform.position);
             EventManager.current.SpawnBullet(transform.position, bulletRotation);
-            //yield WaitForSeconds(bulletCooldown);
-            //allowfire = true;
         }
     }
 
