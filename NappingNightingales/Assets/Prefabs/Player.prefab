@@ -185,6 +185,7 @@ MonoBehaviour:
   movementSpeed: 4
   collisionOffset: 0.05
   health: 3
+  animator: {fileID: 0}
 --- !u!95 &3945036024772976997
 Animator:
   serializedVersion: 4
@@ -195,7 +196,7 @@ Animator:
   m_GameObject: {fileID: 3945036024772977022}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 93bf3b58abf36814ebe8f02f7a72b85d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 08ea8cda6ce5ec843852ae0e5a842175, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

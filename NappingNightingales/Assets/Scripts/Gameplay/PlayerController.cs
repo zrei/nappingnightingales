@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private int health;
 
+    // animation
+    [SerializeField]
+    private Animator animator;
+
     #endregion
 
     #region Methods
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         mySR = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -43,6 +48,7 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
+        
     }
 
     void OnFire() 
@@ -80,6 +86,16 @@ public class PlayerController : MonoBehaviour
                 //transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
             }
 
+            //animation paras
+            animator.SetFloat("horizontal", movementInput.x);
+            animator.SetFloat("vertical", movementInput.y);
+            animator.SetBool("moving", true);
+        }
+        
+        else
+
+        {
+            animator.SetBool("moving", false);
         }
     }
 
