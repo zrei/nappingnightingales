@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour
 
     public void Damage() {
         //Debug.Log("Ow!");
+        EventManager.current.Damage();
         health--;
         if (health <= 0) {
             // Add game over code here
@@ -132,9 +133,6 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         StartCoroutine("FlashRedOnDamage");
-        //mySR.color = new Color(1, 0, 0, 1);
-        //yield return new WaitForSeconds(5);
-        //mySR.color = new Color(1, 1, 1, 1);
     }
 
     private IEnumerator FlashRedOnDamage() {
