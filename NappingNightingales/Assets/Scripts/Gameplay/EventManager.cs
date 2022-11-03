@@ -36,4 +36,11 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    public event Action onDamage;
+    public void Damage() {
+        Debug.Log("OWOWOW");
+        if (onDamage != null) {
+            onDamage();
+        }
+    }
 }

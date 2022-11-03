@@ -52,7 +52,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        shootCountdown -= Time.deltaTime;
+        if (!PauseMenu.GameIsPaused)
+        {
+            shootCountdown -= Time.deltaTime;
+        }
         if (shootCountdown <= 0 && !allowFire) {
             ResetBulletCountdown();
         }
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     void OnFire() 
     {
-        if (allowFire) 
+        if (allowFire && !PauseMenu.GameIsPaused) 
         {
             this.allowFire = false;
             this.shootCountdown = this.bulletCooldown;
@@ -74,8 +77,6 @@ public class PlayerController : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Quaternion bulletRotation = Quaternion.LookRotation(Vector3.forward, mousePos - transform.position);
             EventManager.current.SpawnBullet(transform.position, bulletRotation);
-            //yield WaitForSeconds(bulletCooldown);
-            //allowfire = true;
         }
     }
 
@@ -125,6 +126,7 @@ public class PlayerController : MonoBehaviour
 
     public void Damage() {
         //Debug.Log("Ow!");
+        EventManager.current.Damage();
         health--;
         if (health <= 0) {
             // Add game over code here
@@ -132,9 +134,6 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         StartCoroutine("FlashRedOnDamage");
-        //mySR.color = new Color(1, 0, 0, 1);
-        //yield return new WaitForSeconds(5);
-        //mySR.color = new Color(1, 1, 1, 1);
     }
 
     private IEnumerator FlashRedOnDamage() {
