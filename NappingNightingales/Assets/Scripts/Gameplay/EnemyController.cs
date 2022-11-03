@@ -12,11 +12,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float minShootCountdown;
     [SerializeField] private float maxShootCountdown;
     private float shootCountdown;
+    private SpriteRenderer mySR;
    
     private void Awake()
     {
         this.id = currId;
         EnemyController.currId += 1;
+        mySR = GetComponent<SpriteRenderer>();
     }
 
     // Start is called before the first frame update
@@ -49,6 +51,14 @@ public class EnemyController : MonoBehaviour
         if (health <= 0) {
             Destroy(this.gameObject);
         }
+        StartCoroutine("FlashRedOnDamage");
+    }
+
+    private IEnumerator FlashRedOnDamage() {
+        mySR.color = new Color(1, 0, 0, 1);
+        yield return new WaitForSeconds(0.15f);
+        mySR.color = new Color(1, 1, 1, 1);
+
     }
 
     private void KillEnemy(int id)

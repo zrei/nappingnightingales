@@ -131,6 +131,17 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("Game Over");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        StartCoroutine("FlashRedOnDamage");
+        //mySR.color = new Color(1, 0, 0, 1);
+        //yield return new WaitForSeconds(5);
+        //mySR.color = new Color(1, 1, 1, 1);
+    }
+
+    private IEnumerator FlashRedOnDamage() {
+        mySR.color = new Color(1, 0, 0, 1);
+        yield return new WaitForSeconds(0.15f);
+        mySR.color = new Color(1, 1, 1, 1);
+
     }
 
     #endregion
