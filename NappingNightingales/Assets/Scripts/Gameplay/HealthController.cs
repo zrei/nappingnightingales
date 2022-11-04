@@ -19,10 +19,10 @@ public class HealthController : MonoBehaviour
             children.Add(child.gameObject.GetComponent<SpriteRenderer>());
         }
         maxHealth = children.Count;
-        Debug.Log(maxHealth);
-        for (int i = 0; i < maxHealth; i++) {
+        //Debug.Log(maxHealth);
+        /*for (int i = 0; i < maxHealth; i++) {
             Debug.Log(i);
-        }
+        }*/
     }
 
     private void Start()

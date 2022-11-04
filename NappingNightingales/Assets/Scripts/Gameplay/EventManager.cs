@@ -8,9 +8,23 @@ public class EventManager : MonoBehaviour
     public static EventManager current;
     public GameObject playerBullet;
 
+    private static int numDeaths = 0;
+
     void Awake() 
     {
         current = this;
+    }
+
+    public static void ResetDeathCount() {
+        numDeaths = 0;
+    }
+
+    public static void IncrementDeaths() {
+        numDeaths += 1;
+    }
+
+    public static int GetDeaths() {
+        return numDeaths;
     }
 
     public void SpawnBullet(Vector3 position, Quaternion rotation)
