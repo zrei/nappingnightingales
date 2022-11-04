@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     private bool allowFire = true;
 
     // animation
-    [SerializeField]
     private Animator animator;
 
     #endregion
