@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Main_Menu : MonoBehaviour
 {
-   public void PlayGame()
+
+    public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1;
@@ -12,6 +13,7 @@ public class Main_Menu : MonoBehaviour
 
     public void MainMenu()
     {
+        EventManager.ResetDeathCount();
         SceneManager.LoadScene(0);
     }
 }

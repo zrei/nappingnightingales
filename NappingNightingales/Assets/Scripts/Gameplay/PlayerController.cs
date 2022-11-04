@@ -131,6 +131,8 @@ public class PlayerController : MonoBehaviour
         if (health <= 0) {
             // Add game over code here
             //Debug.Log("Game Over");
+            EventManager.IncrementDeaths();
+            Debug.Log(EventManager.GetDeaths());
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         StartCoroutine("FlashRedOnDamage");

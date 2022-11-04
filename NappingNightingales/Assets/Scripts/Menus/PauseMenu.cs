@@ -44,7 +44,15 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
+        EventManager.ResetDeathCount();
         SceneManager.LoadScene("Menu");
         GameIsPaused = false;
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        GameIsPaused = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
