@@ -9,6 +9,8 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     private float bulletSpeed = 5.5f;
 
+    protected int baseDamage = 1;
+
     private static int currId = 0;
     private int id;
 
@@ -41,6 +43,15 @@ public class BulletController : MonoBehaviour
         {
             EventManager.current.CollideWall(this.id);
         }
+    }
+
+    public void ContactFire()
+    {
+
+    }
+
+    public int GetDamage() {
+        return this.baseDamage;
     }
 
     //can be overridden

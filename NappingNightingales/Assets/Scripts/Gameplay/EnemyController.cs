@@ -57,9 +57,10 @@ public class EnemyController : MonoBehaviour
         this.shootCountdown = Random.Range(minShootCountdown, maxShootCountdown);
     }
 
-    public void Damage()
+    public void Damage(int damageAmount)
     {
-        health--;
+        Debug.Log(damageAmount);
+        health -= damageAmount;
         if (health <= 0) {
             //mySR.sprite = initialDeathState;
             animator.SetTrigger("isDead");
